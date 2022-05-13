@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useAppSelector } from "../app/hooks";
 import {
   IRoute,
   privateRoutes,
@@ -8,10 +9,10 @@ import {
 } from "../routes/index";
 
 const AppRouter = () => {
-  const auth = false;
+  const { isConnected } = useAppSelector((state) => state.auth);
   return (
     <Routes>
-      {auth ? (
+      {isConnected ? (
         <>
           {privateRoutes.map((r: IRoute) => (
             <Route key={r.path} path={r.path} element={r.component} />

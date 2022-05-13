@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  background: green;
+body, html, #root {
+  width: 100%; 
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+*, *::after, *::before {
+  box-sizing: border-box;
+  scrollbar-color: var(--gray-300-color) var(--gray-200-color);
 }
