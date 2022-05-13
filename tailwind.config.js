@@ -1,10 +1,6 @@
 module.exports = {
   mode: "jit",
-  content: [
-    "./src/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./public/index.html",
-  ],
+  content: ["./src/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
