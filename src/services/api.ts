@@ -2,10 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { UserVoteBaseTable } from "../types/UserVoteBaseTable";
 import { Vote } from "../types/Vote";
 import { VoteOptions } from "../types/VoteOptions";
+const BASE_URL = process.env.BASE_URL;
 export const voteMonsterApi = createApi({
   reducerPath: "voteMonsterApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://vote-monster-ijwxzlc03-ekateryna-rodina.vercel.app/",
+    baseUrl: "https://vote-monster-app.vercel.app/",
   }),
   tagTypes: ["Records"],
   endpoints: (builder) => ({
