@@ -4,7 +4,9 @@ import { Vote } from "../types/Vote";
 import { VoteOptions } from "../types/VoteOptions";
 export const voteMonsterApi = createApi({
   reducerPath: "voteMonsterApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://vote-monster-ijwxzlc03-ekateryna-rodina.vercel.app/",
+  }),
   tagTypes: ["Records"],
   endpoints: (builder) => ({
     createUser: builder.mutation<any, any>({
