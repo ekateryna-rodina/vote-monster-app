@@ -1,9 +1,13 @@
+import InitialSelection from "../pages/InitialSelection";
 import Login from "../pages/Login";
+import Result from "../pages/Result";
 import Vote from "../pages/Vote";
 
 export enum RouteNames {
   Login = "/login",
-  Vote = "/",
+  InitialSelection = "/",
+  Vote = "/vote",
+  Result = "/result",
 }
 
 export interface IRoute {
@@ -21,8 +25,16 @@ export const publicRoutes: IRoute[] = [
 
 export const privateRoutes: IRoute[] = [
   {
-    path: RouteNames.Vote,
+    path: RouteNames.InitialSelection,
     exact: true,
+    component: <InitialSelection />,
+  },
+  {
+    path: RouteNames.Vote,
     component: <Vote />,
+  },
+  {
+    path: RouteNames.Result,
+    component: <Result />,
   },
 ];

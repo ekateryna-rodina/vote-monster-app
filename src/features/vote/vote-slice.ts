@@ -3,11 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface VoteState {
   initialOptionsSelection: number[];
   combinations: number[];
+  currentVoteCombinationIdx: number;
+  combinationVoteResult: Record<number, number>;
 }
 
 const initialState: VoteState = {
   initialOptionsSelection: [],
   combinations: [],
+  currentVoteCombinationIdx: 0,
+  combinationVoteResult: {},
 };
 
 const voteSlice = createSlice({
@@ -29,9 +33,23 @@ const voteSlice = createSlice({
     setCombinations(state, action: PayloadAction<number[]>) {
       state.combinations = action.payload;
     },
+    setCurrentVoteCombinationIdx(state, action: PayloadAction<number>) {
+      state.currentVoteCombinationIdx = action.payload;
+    },
+    setCombinationVoteResult(
+      state,
+      action: PayloadAction<Record<number, number>>
+    ) {
+      state.combinationVoteResult[+Object.keys(action.payload)[0]] =
+        Object.values(action.payload)[0];
+    },
   },
 });
 
-export const { setInitialOptionsSelection, setCombinations } =
-  voteSlice.actions;
+export const {
+  setInitialOptionsSelection,
+  setCombinations,
+  setCurrentVoteCombinationIdx,
+  setCombinationVoteResult,
+} = voteSlice.actions;
 export default voteSlice.reducer;

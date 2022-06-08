@@ -13,3 +13,9 @@ body, html, #root {
   box-sizing: border-box;
   scrollbar-color: var(--gray-300-color) var(--gray-200-color);
 }
+
+/* Buttons */
+.btn-disabled{
+  pointer-events: none;
+  @apply bg-gray-400;
+}

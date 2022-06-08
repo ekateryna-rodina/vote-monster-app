@@ -52,12 +52,20 @@ export const voteMonsterApi = createApi({
         method: "GET",
       }),
     }),
+    getCombinationById: builder.query<
+      { id: number; options: number[] }[],
+      number
+    >({
+      query: (id) => ({
+        url: `voteCombinations?id=${id}`,
+        method: "GET",
+      }),
+    }),
     getCombinationsByOptions: builder.query<{}, number[][]>({
       query: function (options) {
         let url = "voteCombinations?";
         const optionsList = options.map((o) => `options=${o}`);
         url += optionsList.join("&");
-        console.log("urlll", url);
         return {
           url,
           method: "GET",
@@ -109,4 +117,5 @@ export const {
   useSaveVoteMutation,
   useSaveVoteCombinationMutation,
   useGetCombinationsByOptionsQuery,
+  useGetCombinationByIdQuery,
 } = voteMonsterApi;

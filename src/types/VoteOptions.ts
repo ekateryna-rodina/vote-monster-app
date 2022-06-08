@@ -1,5 +1,5 @@
 export type VoteOption = {
-  id: string;
+  id: number;
   name: string;
   image: string;
   metadata: {};

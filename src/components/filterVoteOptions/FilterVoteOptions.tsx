@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setCombinations } from "../../features/vote/vote-slice";
 import { useGetCombinationsByOptionsQuery } from "../../services/api";
@@ -6,7 +7,9 @@ import SectionTitle from "../sectionTitle/SectionTitle";
 import VoteOptionList from "../voteOptionList/VoteOptionList";
 
 const FilterVoteOptions = () => {
-  const { initialOptionsSelection } = useAppSelector((state) => state.vote);
+  const { initialOptionsSelection, currentVoteCombinationIdx } = useAppSelector(
+    (state) => state.vote
+  );
   const [combinationOptionIds, setCombinationOptionIds] = useState<number[][]>(
     []
   );
@@ -14,8 +17,8 @@ const FilterVoteOptions = () => {
     skip: !combinationOptionIds.length,
   });
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const startVotingHandler = () => {
-    console.log(initialOptionsSelection);
     const selected = [...initialOptionsSelection].sort((a, b) => a - b);
     const combinations: number[][] = [];
     // create vote combinations for user and save to the repo
@@ -29,6 +32,7 @@ const FilterVoteOptions = () => {
   useEffect(() => {
     if (!data) return;
     dispatch(setCombinations((data as []).map((d: { id: number }) => d.id)));
+    navigate(`/vote`);
     // eslint-disable-next-line
   }, [combinationOptionIds, data]);
   return (
