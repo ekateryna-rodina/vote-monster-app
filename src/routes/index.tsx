@@ -1,9 +1,9 @@
-import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
+import Vote from "../pages/Vote";
 
 export enum RouteNames {
   Login = "/login",
-  Dashboard = "/",
+  Vote = "/",
 }
 
 export interface IRoute {
@@ -21,8 +21,8 @@ export const publicRoutes: IRoute[] = [
 
 export const privateRoutes: IRoute[] = [
   {
-    path: RouteNames.Dashboard,
+    path: RouteNames.Vote,
     exact: true,
-    component: <Dashboard />,
+    component: <Vote />,
   },
 ];

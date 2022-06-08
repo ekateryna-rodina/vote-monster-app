@@ -17,7 +17,7 @@ const AppRouter = () => {
           {privateRoutes.map((r: IRoute) => (
             <Route key={r.path} path={r.path} element={r.component} />
           ))}
-          <Route path="*" element={<Navigate to={RouteNames.Dashboard} />} />
+          <Route path="*" element={<Navigate to={RouteNames.Vote} />} />
         </>
       ) : (
         <>
